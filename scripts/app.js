@@ -33,7 +33,10 @@ document.addEventListener('DOMContentLoaded',() => {
     if (index >= 60 && index <= 69 && index % 2 === 1) {
       cell.classList.add('car')
     }
-    if (index >= 10 && index <= 39) {
+    if (index >= 15 && index <= 17 || index >= 23 && index <= 26 || index >= 23 && index <= 26 || index >= 31 && index <= 33 || index === 37 || index === 38 ) {
+      cell.classList.add('log')
+    }
+    if (index >= 10 && index <= 14 || index >= 18 && index <= 22 || index >= 27 && index <= 30 || index >= 34 && index <= 36 || index === 39) {
       cell.classList.add('river')
     }
     if (index === 95) {
@@ -76,14 +79,43 @@ document.addEventListener('DOMContentLoaded',() => {
     // when the key is pressed add the avatar to that grid
     cells[frogIndex].classList.add('player')
 
+    // Declaring the frogInHome function
     function frogInHome(frogIndex) {
       if (frogIndex <= 9 && frogIndex % 2 === 1 ) {
         alert('You have won the game!')
       }
     }
     console.log(frogIndex)
+
+    // Function to check to see if frog hits car
+    function frogDrowned(frogIndex){
+      if (cells[frogIndex].classList.contains('river')) {
+        console.log('You drowned!')
+      }
+    }
+
+    function frogRunOver(frogIndex) {
+      if (cells[frogIndex].classList.contains('car'))
+        console.log('You have been run over!')
+    }
+
+    
   
+
+
+
+
+
+
+
+
+
+
+    
+    // Win conditions function to check to see if frog makes it to the lily pad
     frogInHome(frogIndex)
+    frogDrowned(frogIndex)
+    frogRunOver(frogIndex)
 
 
 
