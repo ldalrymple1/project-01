@@ -68,3 +68,10 @@ body {
   background-position-x: 0;
   background-position-y: 0;
 }
+
+.skull-and-crossbones {
+  background-image: url(https://www.pinclipart.com/picdir/middle/78-780446_skull-and-crossbone-clipart-webweaver-skull-and-crossbones.png);
+  background-size: 60px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
