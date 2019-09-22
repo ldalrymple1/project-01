@@ -84,7 +84,25 @@ document.addEventListener('DOMContentLoaded',() => {
         let logCellIndex = parseInt(logCell.getAttribute('data-id'))
         logCellIndex -= 1
         logCell = cells[logCellIndex]
+        console.log(logCell)
         logCell.classList.add('log')
+        
+
+
+
+
+        
+        // let logX = logCellIndex % width
+
+
+        // if (logX === 0) {
+        //   logCellIndex = logCellIndex + width - 1
+        //   logX = logX + width - 1
+        // } else {
+        //   logCellIndex = logCellIndex - 1 
+        //   logX = logX - 1
+        // }
+
       })
 
     }, 1000)
@@ -130,25 +148,29 @@ document.addEventListener('DOMContentLoaded',() => {
   // KEY UP- frog moving. The agme?
 
   document.addEventListener('keyup', (e) => {
-    console.log('here')
     // when the key is lifted up, remove the avatar from that grid
     cells[frogIndex].classList.remove('player') 
     // x = 
     const x = frogIndex % width
-    
+    console.log(x)
     // 0,1,2,3,4 = index, divide these by width = 10 you get x coordinates of 0,0.1,0.2,0.3,0.4 - round these to integers
     const y = Math.floor(frogIndex / width)
+    console.log(y)
     
     
     //  if key code is 37,38,39,40 (Left, Up, Right, Down)
     switch (e.keyCode) {
       case 37: if (x > 0) frogIndex -= 1
+      // if the fog gets to left hand side of grid (x axis bigger than 0) get the frog to go back one
         break
       case 38: if (y > 0) frogIndex -= width
+      // if the frog gets to the top frog index - 10 (e.g. at y of 30 )
         break
       case 39: if (x < width - 1) frogIndex += 1
+      // if x is smaller than 9 move one to the right
         break
       case 40: if (y < width - 1)frogIndex += width
+      // if y is smaller than 9, 
         break
     }
 
