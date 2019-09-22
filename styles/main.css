@@ -7,9 +7,10 @@ body {
   display: flex;
   height: 100vh;
   margin: 0;
-  justify-content: center;
+  /* justify-content: center; */
+  background-image: url(https://i.imgur.com/UpkGCs5.jpg);
+  /* background-size: 1000px; */
 }
-
 .grid {
   display: flex;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
@@ -20,6 +21,7 @@ body {
   justify-content: center;
   max-height: 600px;
   max-width: 600px;
+  padding-left: 70px;
 }
 
 .grid div {
@@ -74,4 +76,8 @@ body {
   background-size: 60px;
   background-position-x: 0;
   background-position-y: 0;
+}
+
+.title img {
+  width: 600px;
 }

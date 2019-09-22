@@ -73,9 +73,41 @@ document.addEventListener('DOMContentLoaded',() => {
   // WHat happens when someone clicks on start button. Initiates the game
   startButton.addEventListener('click', () => {
    
-    // let brownX = brownCell1 % width
     
+    // Set interval to get CARS to move
+    setInterval(() => {
+      const carCells = document.querySelectorAll('.car')
+      carCells.forEach(carCell => {
+        carCell.classList.remove('car')
+        carCell.classList.add('div')
+        let carCellIndex = parseFloat(carCell.getAttribute('data-id'))
+        console.log(typeof carCellIndex)
+        console.log('car index is ' + '' + carCellIndex)
+        carCellIndex -= 1
+        carCell = cells[carCellIndex]
+        carCell.classList.add('car')
+        const startIndex = 60
+        console.log(startIndex)
+        console.log('hello' + carCell)
 
+        if (carCellIndex === 60) {
+          carCellIndex = 69
+        } else if (carCellIndex === 70) {
+          carCellIndex = 79
+        } else {
+          carCellIndex -= 1
+        }
+      
+        
+
+      })
+
+
+    }, 1000)
+
+
+
+    // Set Interval to get LOGS TO MOVE
     setInterval(() => {
       const logCells = document.querySelectorAll('.log')
       logCells.forEach(logCell => {
@@ -84,30 +116,32 @@ document.addEventListener('DOMContentLoaded',() => {
         let logCellIndex = parseInt(logCell.getAttribute('data-id'))
         logCellIndex -= 1
         logCell = cells[logCellIndex]
-        console.log(logCell)
         logCell.classList.add('log')
+       
+
+        const x = logCellIndex % width
+        console.log(logCellIndex + 'look at me' + x)
+        if (x === 0) logCellIndex -= width
+
+        
         
 
 
 
 
-        
-        // let logX = logCellIndex % width
 
+        // const startIndex = cells[39]
 
-        // if (logX === 0) {
-        //   logCellIndex = logCellIndex + width - 1
-        //   logX = logX + width - 1
+        // if (logCellIndex === 30) {
+        //   logCellIndex = startIndex
         // } else {
-        //   logCellIndex = logCellIndex - 1 
-        //   logX = logX - 1
+        //   logCellIndex = logCellIndex -= 1
         // }
 
       })
 
     }, 1000)
 
-  
     // logCells.forEach((logCell) => {
     //   setInterval(() => {
     //     
@@ -177,10 +211,24 @@ document.addEventListener('DOMContentLoaded',() => {
     // when the key is pressed add the avatar to that grid
     cells[frogIndex].classList.add('player')
 
+    
+    
+    
+
+    
+      
+  
+    
+
+
+
+
     // Declaring the frogInHome function
     function frogInHome(frogIndex) {
       if (frogIndex <= 9 && frogIndex % 2 === 1 ) {
         alert('You have won the game!')
+        location.reload()
+        // cells[frogIndex] = 95
       }
     }
     console.log(frogIndex)
@@ -189,13 +237,19 @@ document.addEventListener('DOMContentLoaded',() => {
     function frogDrowned(frogIndex){
       if (cells[frogIndex].classList.contains('river')) {
         console.log('You drowned!')
+        setTimeout(function(){
+          location.reload(1)
+        }, 500)
       }
     }
 
     function frogRunOver(frogIndex) {
       if (cells[frogIndex].classList.contains('car')) {
         console.log('You have been run over!')
-        cells[frogIndex].classList.replace('car', 'skull-and-crossbones')
+        cells[frogIndex].classList.replace('car','skull-and-crossbones')
+        setTimeout(function(){
+          location.reload(1)
+        }, 500)
       }
 
     }
