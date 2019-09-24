@@ -1,146 +1,271 @@
 document.addEventListener('DOMContentLoaded',() => {
   
 
-  // Stored variables
+  // STORED VARIABLES
+
   const grid = document.querySelector('.grid')
   const width = 10
+  const height = 10
   const cells = []
   let frogIndex = 95
   const startButton = document.querySelector('.start')
   const riverCells = document.querySelectorAll('.river')
-  // let brownCell1 = 15
-  
-  
-  
-  
-  // function handleClick(e) {
-  //   e.target.classList.add('player')
-  // }
+  const gridSection = document.querySelector('.grid-parent')
+  const losingText = document.querySelector('.losing-text')
+  const winningText = document.querySelector('.winning-text')
+  const resetButton = document.querySelector('.reset')
+  const savedChars = document.querySelector('.saved-chars')
+  const fiona = document.querySelector('.fiona')
+  const puss = document.querySelector('.puss')
+  const donkey = document.querySelector('.donkey')
+  // const progressBar = document.querySelector('#progressBar')
+  const basicUsage = document.querySelector('#basicUsage')
 
   
+
+  
+
+  // HIDING THINGS TO REAPPEAR ON EVENT LISTENERS
+
+  losingText.classList.add('hide')
+  winningText.classList.add('hide')
+  fiona.classList.add('hide')
+  puss.classList.add('hide')
+  donkey.classList.add('hide')
+
+
+  
+  
+  // LOADING THE GRID
 
   for (let i = 0; i < width ** 2; i++) {
     const cell = document.createElement('div')
     cell.setAttribute('data-id', i)
   
-
     grid.appendChild(cell)
     cells.push(cell)
     cell.classList.add('.div')
-    // cell.addEventListener('click', handleClick)
-
   }
 
+  
+
+  // STYLING THE GRID
+
   cells.forEach(function (cell, index) {
-    if (index >= 40 && index <= 59) {
+    if (index >= 40 && index <= 59 || index >= 0 && index <= 9 ) {
       cell.classList.add('safety')
     }
-    if (index <= 9 && index % 2 === 1) {
-      cell.classList.add('lilypad')
+    if (index === 3) {
+      cell.classList.add('puss')
     }
-    if (index >= 80 && index <= 89 && index % 2 === 1) {
-      cell.classList.add('car')
+    if (index === 5) {
+      cell.classList.add('donkey')
     }
-    if (index >= 60 && index <= 69 && index % 2 === 1) {
-      cell.classList.add('car')
+    if (index === 7) {
+      cell.classList.add('fiona')
     }
+    
     if (index >= 15 && index <= 17 || index >= 23 && index <= 26 || index >= 23 && index <= 26 || index >= 31 && index <= 33 || index === 37 || index === 38 ) {
       cell.classList.add('log')
     }
     if (index >= 10 && index <= 14 || index >= 18 && index <= 22 || index >= 27 && index <= 30 || index >= 34 && index <= 36 || index === 39) {
       cell.classList.add('river')
     }
+    if (index >= 60 && index <= 99) {
+      cell.classList.add('swamp')
+    }
+    if (index >= 90 && index <= 99) {
+      cell.classList.add('swamp')
+    }
+    if (index >= 80 && index <= 89 && index % 2 === 0) {
+      cell.classList.add('car')
+    }
+    if (index >= 60 && index <= 69 && index % 2 === 1) {
+      cell.classList.add('car')
+    }
     if (index === 95) {
       cell.classList.add('player')
     }
 
   })  
-    
+
+
+
+
   
 
 
-  // cells.(function (cell, index) {
-  //   if (index >= 15 && index <= 17){
-  //     console.log('adding safety')
-  //     cell.classList.add('safety')
-  //   }
-  // })
 
-
-
-
-
-  // WHat happens when someone clicks on start button. Initiates the game
+  // What happens when someone clicks on start button. Initiates the game
   startButton.addEventListener('click', () => {
    
-    
-    // Set interval to get CARS to move
-    setInterval(() => {
-      const carCells = document.querySelectorAll('.car')
-      carCells.forEach(carCell => {
-        carCell.classList.remove('car')
-        carCell.classList.add('div')
-        let carCellIndex = parseFloat(carCell.getAttribute('data-id'))
-        console.log(typeof carCellIndex)
-        console.log('car index is ' + '' + carCellIndex)
-        carCellIndex -= 1
-        carCell = cells[carCellIndex]
-        carCell.classList.add('car')
-        const startIndex = 60
-        console.log(startIndex)
-        console.log('hello' + carCell)
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10)
 
-        if (carCellIndex === 60) {
-          carCellIndex = 69
-        } else if (carCellIndex === 70) {
-          carCellIndex = 79
-        } else {
-          carCellIndex -= 1
+        minutes = minutes < 10 ? '0' + minutes : minutes
+        seconds = seconds < 10 ? '0' + seconds : seconds
+
+        display.textContent = minutes + ':' + seconds
+
+        if (--timer < 0) {
+          timer = duration
         }
-      
-        
+      }, 1000)
+    }
 
-      })
+    window.onload = function () {
+      var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time')
+      startTimer(fiveMinutes, display)
+    }
 
 
-    }, 1000)
 
 
+
+
+
+    // function progress(timeleft, timetotal, progressBar) {
+    //   var progressBarWidth = timeleft * $element.width() / timetotal
+    //   $element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft / 60) + ':' + timeleft % 60)
+    //   if (timeleft > 0) {
+    //     setTimeout(function () {
+    //       progress(timeleft - 1, timetotal, $element)
+    //     }, 1000)
+    //   }
+    // }
+
+    // progress(600, 600, $('#progressBar'))
+
+
+
+
+
+
+
+    // Set interval to get CARS to move
+
+    function carMovement() {
+
+      setInterval(() => {
+        const carCells = document.querySelectorAll('.car')
+        carCells.forEach(carCell => {
+          carCell.classList.remove('car')
+          carCell.classList.add('swamp')
+          let carCellIndex = parseFloat(carCell.getAttribute('data-id'))
+          if (carCellIndex === 69 || carCellIndex === 89) {
+            carCellIndex = carCellIndex - width + 1
+          } else {
+            carCellIndex += 1
+          }
+          carCell = cells[carCellIndex]
+          carCell.classList.add('car')
+          if (carCell.classList.contains('player')) {
+            carCell.classList.replace('car', 'skull-and-crossbones')
+            cells[frogIndex].classList.remove('player')
+            cells[frogIndex] = 95
+            setTimeout(function(){
+              grid.classList.add('hide')
+            }, 900)
+    
+            setTimeout(function(){
+              losingText.classList.replace('hide', 'losing-text')
+            }, 1000)
+            
+
+          }
+
+        })
+      }, 1000)
+    }
+
+    carMovement()
 
     // Set Interval to get LOGS TO MOVE
-    setInterval(() => {
-      const logCells = document.querySelectorAll('.log')
-      logCells.forEach(logCell => {
-        logCell.classList.remove('log')
-        logCell.classList.add('river')
-        let logCellIndex = parseInt(logCell.getAttribute('data-id'))
-        logCellIndex -= 1
-        logCell = cells[logCellIndex]
-        logCell.classList.add('log')
-       
 
-        const x = logCellIndex % width
-        console.log(logCellIndex + 'look at me' + x)
-        if (x === 0) logCellIndex -= width
+    function logMovement() {
+      setInterval(() => {
+        const logCells = document.querySelectorAll('.log')
+        logCells.forEach(logCell => logCell.classList.remove('log'))
+        logCells.forEach(logCell => {
+          //OLD POSITION
+          logCell.classList.add('river')
+          let logCellIndex = parseInt(logCell.getAttribute('data-id'))
+          let isFrogOnLog = false
 
-        
-        
+          if (frogIndex === logCellIndex) {
+            isFrogOnLog = true
+            logCell.classList.remove('player')
+          }
+
+          // UPDATES LOG POITION
+          if (logCellIndex === 10 || logCellIndex === 20 || logCellIndex === 30) {
+            logCellIndex = logCellIndex + width - 1
+          } else {
+            logCellIndex -= 1
+          }
+
+          logCell = cells[logCellIndex]
+
+          if (isFrogOnLog) {
+            frogIndex = logCellIndex
+            logCell.classList.add('player')
+          }
+          logCell.classList.add('log')
+
+          
+
+      
+          
+          // if (frogOnLog === true) {
+          //   cells[frogIndex] --
 
 
+          //   // cells[frogIndex].classList.remove('player')
+          //   // cells[frogIndex] = 95
+          //   // setTimeout(function(){
+          //   //   grid.classList.add('hide')
+          //   // }, 900)
+    
+          //   // setTimeout(function(){
+          //   //   losingText.classList.replace('hide', 'losing-text')
+          //   // }, 1000)
+          // }
+
+          
+
+          // function frogOnLog(frogIndex, logCell) {
+          //   if (cells[frogIndex] === logCell) {
+          //     return true
+          //   } else {
+          //     false
+          //   }
+          // }
+
+          // console.log(frogIndex)
+          // console.log(frogOnLog())
+          
+          // const frogOnLog = logCell.classList.contains('player')
+          // console.log(Boolean(frogOnLog))
+
+          
 
 
+        })
 
-        // const startIndex = cells[39]
+      }, 5000)
 
-        // if (logCellIndex === 30) {
-        //   logCellIndex = startIndex
-        // } else {
-        //   logCellIndex = logCellIndex -= 1
-        // }
+      
+      
 
-      })
+    }
 
-    }, 1000)
+    logMovement()
+
+
 
     // logCells.forEach((logCell) => {
     //   setInterval(() => {
@@ -161,35 +286,24 @@ document.addEventListener('DOMContentLoaded',() => {
     // })
 
   })
+
   
   
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // KEY UP- frog moving. The agme?
+  // KEY UP- frog moving. The game?
 
   document.addEventListener('keyup', (e) => {
     // when the key is lifted up, remove the avatar from that grid
     cells[frogIndex].classList.remove('player') 
     // x = 
     const x = frogIndex % width
-    console.log(x)
+    
     // 0,1,2,3,4 = index, divide these by width = 10 you get x coordinates of 0,0.1,0.2,0.3,0.4 - round these to integers
     const y = Math.floor(frogIndex / width)
-    console.log(y)
+    
     
     
     //  if key code is 37,38,39,40 (Left, Up, Right, Down)
@@ -206,6 +320,11 @@ document.addEventListener('DOMContentLoaded',() => {
       case 40: if (y < width - 1)frogIndex += width
       // if y is smaller than 9, 
         break
+      case 32: if (y > 0) frogIndex -= width * 2
+
+        // frogRunOver()
+        // frogDrowned()
+
     }
 
     // when the key is pressed add the avatar to that grid
@@ -214,45 +333,159 @@ document.addEventListener('DOMContentLoaded',() => {
     
     
     
+    function donkeySaved() {
+      if (cells[frogIndex].classList.contains('donkey')) {
+        cells[frogIndex].classList.remove('player')
+        cells[frogIndex].classList.replace('donkey', 'trophy')
+        frogIndex = 95
+        setTimeout(function () {
+          donkey.classList.replace('hide', 'donkey')
+        }, 800)
+      }
+    }
+
+    function fionaSaved() {
+      if (cells[frogIndex].classList.contains('fiona')) {
+        cells[frogIndex].classList.remove('player')
+        cells[frogIndex].classList.replace('fiona', 'trophy')
+        frogIndex = 95
+        setTimeout(function () {
+          fiona.classList.replace('hide', 'fiona')
+        }, 800)
+      }
+    }
+
+  
+ 
+
+    function pussSaved() {
+      if (cells[frogIndex].classList.contains('puss')) {
+        cells[frogIndex].classList.remove('player')
+        cells[frogIndex].classList.replace('puss', 'trophy')
+        frogIndex = 95
+        setTimeout(function () {
+          puss.classList.replace('hide', 'puss')
+        }, 800)
+      }
+    }
 
     
-      
-  
+
+
+    
     
 
 
 
 
     // Declaring the frogInHome function
-    function frogInHome(frogIndex) {
-      if (frogIndex <= 9 && frogIndex % 2 === 1 ) {
-        alert('You have won the game!')
-        location.reload()
-        // cells[frogIndex] = 95
-      }
-    }
-    console.log(frogIndex)
+    // function frogInHome(frogIndex) {
+    //   if (frogIndex === 3 || frogIndex === 5 || frogIndex === 5 ) {
+    //     cells[frogIndex].classList.remove('donkey')
+    //     savedChars.classList.add('puss')
 
-    // Function to check to see if frog hits car
+    //     setTimeout(function(){
+    //       grid.classList.add('hide')
+    //     }, 900)
+        
+    //     setTimeout(function(){
+    //       winningText.classList.replace('hide', 'winning-text')
+    //     }, 1000)
+    //     // location.reload()
+    //     // cells[frogIndex] = 95
+    //   }
+    // }
+    // console.log(frogIndex)
+
+    
     function frogDrowned(frogIndex){
-      if (cells[frogIndex].classList.contains('river')) {
-        console.log('You drowned!')
-        setTimeout(function(){
-          location.reload(1)
-        }, 500)
+      if (cells[frogIndex].classList.contains('log')) {
+        console.log('You are on a log')
+      } else if (cells[frogIndex].classList.contains('river')) {
+        console.log('you drowned!')
+        cells[frogIndex].classList.replace('river', 'skull-and-crossbones')
+        cells[frogIndex].classList.remove('player')
+        setTimeout(function () {
+          grid.classList.add('hide')
+        }, 900)
+
+        setTimeout(function () {
+          losingText.classList.replace('hide', 'losing-text')
+        }, 1000)
       }
-    }
+
+
+      // const riverCells = document.querySelector('.river')
+      // if (frogIndex === riverCells) {
+      //   console.log('You drowned!')
+      //   cells[frogIndex].classList.replace('river', 'skull-and-crossbones')
+      //   cells[frogIndex].classList.remove('player')
+      // }
+    } 
+      
+    
+
+       
+    
 
     function frogRunOver(frogIndex) {
+    
       if (cells[frogIndex].classList.contains('car')) {
-        console.log('You have been run over!')
-        cells[frogIndex].classList.replace('car','skull-and-crossbones')
+        console.log('You have been run over!', cells[frogIndex])
+        cells[frogIndex].classList.replace('car', 'skull-and-crossbones')
+        cells[frogIndex].classList.remove('player')
+        cells[frogIndex] = 95
         setTimeout(function(){
-          location.reload(1)
-        }, 500)
+          grid.classList.add('hide')
+        }, 900)
+
+        setTimeout(function(){
+          losingText.classList.replace('hide', 'losing-text')
+        }, 1000)
+
       }
 
     }
+
+
+
+    function winningCondition() {
+      if (cells[3].classList.contains('trophy') && cells[5].classList.contains('trophy') && cells[7].classList.contains('trophy')) {
+        console.log('you won')
+        setTimeout(function () {
+          grid.classList.add('hide')
+        }, 900)
+
+        setTimeout(function () {
+          winningText.classList.replace('hide', 'winning-text')
+        }, 1000)
+
+      } 
+
+    }
+
+
+    
+
+      
+
+
+
+
+
+   
+    
+
+    // RESET BUTTON 
+    resetButton.addEventListener('click', () => {
+      location.reload(1)
+    } )
+
+
+
+
+
+    
 
 
     
@@ -277,15 +510,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-    
-
-
-
-
-
-
-
-
+  
 
     //   cells.forEach(function (cell, index) {
     //     if (index >= 10 && index <= 39){
@@ -302,16 +527,16 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
 
-
-
-
-
-
     
     // Win conditions function to check to see if frog makes it to the lily pad
-    frogInHome(frogIndex)
+    // frogInHome(frogIndex)
     frogDrowned(frogIndex)
     frogRunOver(frogIndex)
+    fionaSaved()
+    donkeySaved()
+    pussSaved()
+    winningCondition()
+    
     
 
 

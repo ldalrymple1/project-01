@@ -2,6 +2,27 @@
   box-sizing: border-box;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+section:first-of-type {
+  flex: 1;
+  height: 80vh;
+  justify-content: center;
+  padding: 10px;
+}
+
+section:last-of-type {
+  flex: 1;
+  height: 80vh;
+  justify-content: center;
+  padding: 10px;
+}
+
 body {
   align-items: center;
   display: flex;
@@ -23,26 +44,27 @@ body {
   justify-content: center;
   max-height: 600px;
   max-width: 600px;
-  padding-left: 70px;
+  padding-left: 20px;
+  opacity: 0.9;
 }
 
 .grid div {
   flex-grow: 1;
   height: 10%;
   width: 10%;
-  /* border: 2px solid black; */
+  border: 0.5px solid black;
 
 }
 
 .grid div.player {
   background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Shrek-icon.png);
-  background-size: 65px;
+  background-size: 53px;
   background-position-x: 0;
   background-position-y: 0;
 }
 
 .grid div.safety {
-  background-color: greenyellow;
+  background-color: #405d27;
 }
 
 .grid div.lilypad {
@@ -52,9 +74,30 @@ body {
   background-position-y: 0;
 }
 
+.grid div.puss {
+  background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Puss-2-icon.png);
+  background-size: 50px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.grid div.donkey {
+  background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Donkey-3-icon.png);
+  background-size: 50px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.grid div.fiona {
+  background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Fiona-3-icon.png);
+  background-size: 50px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
 .grid div.car {
-  background-image: url(https://png.pngtree.com/png-clipart/20190116/ourlarge/pngtree-jeep-red-car-classic-cars-car-png-image_402334.jpg);
-  background-size: 60px;
+  background-image: url(../images/game-boy-advance-11456.png);
+  background-size: 80px;
   background-position-x: 0;
   background-position-y: 0;
 }
@@ -82,4 +125,90 @@ body {
 
 .title img {
   width: 600px;
+}
+
+.swamp {
+  background-color: #c1946a;
+  background-size: 60px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.scroll img {
+  /* height: 350px; */
+  width: 70%;
+  height: auto;
+  
+}
+
+.trophy {
+  background-image: url(https://i.gifer.com/XqyT.gif);
+  background-size: 60px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.losing-text {
+  font-family: 'Shrek', 'arial';
+  font-size: 90px;
+  text-shadow: 5px 5px 5px #b9cf35;
+}
+
+.winning-text {
+  font-family: 'Shrek', 'arial';
+  font-size: 90px;
+  text-shadow: 5px 5px 5px #b9cf35;
+}
+
+.saved-chars {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 200px;
+}
+
+.fiona {
+  width: 100px;
+  height: 100px;
+}
+
+.puss {
+  width: 100px;
+  height: 100px;
+}
+
+.donkey {
+  width: 100px;
+  height: 100px;
+}
+
+/* #progressBar {
+  width: 400px;
+  margin: 10px auto;
+  height: 22px;
+  background-color: #0A5F44;
+}
+
+#progressBar div {
+  height: 100%;
+  text-align: right;
+  padding: 0 10px;
+  line-height: 22px;
+  width: 0;
+  background-color: #CBEA00;
+  box-sizing: border-box;
+} */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+
+}
+
+.timer {
+  border: 2px solid black;
 }
