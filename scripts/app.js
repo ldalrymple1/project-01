@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded',() => {
       cell.classList.add('swamp')
     }
     if (index >= 80 && index <= 89 && index % 2 === 0) {
-      cell.classList.add('car')
+      cell.classList.add('fairyG')
     }
     if (index >= 60 && index <= 69 && index % 2 === 1) {
       cell.classList.add('car')
@@ -116,11 +116,11 @@ document.addEventListener('DOMContentLoaded',() => {
       }, 1000)
     }
 
-    window.onload = function () {
-      var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time')
-      startTimer(fiveMinutes, display)
-    }
+    
+    var twoMinutes = 60 * 2,
+      display = document.querySelector('.timer')
+    startTimer(twoMinutes, display)
+
 
 
 
@@ -165,6 +165,37 @@ document.addEventListener('DOMContentLoaded',() => {
           carCell.classList.add('car')
           if (carCell.classList.contains('player')) {
             carCell.classList.replace('car', 'skull-and-crossbones')
+            cells[frogIndex].classList.remove('player')
+            cells[frogIndex] = 95
+            setTimeout(function(){
+              grid.classList.add('hide')
+            }, 900)
+    
+            setTimeout(function(){
+              losingText.classList.replace('hide', 'losing-text')
+            }, 1000)
+            
+
+          }
+
+        })
+      }, 500)
+
+      setInterval(() => {
+        const fairyCells = document.querySelectorAll('.fairyG')
+        fairyCells.forEach(fairyCell => {
+          fairyCell.classList.remove('fairyG')
+          fairyCell.classList.add('swamp')
+          let fairyCellIndex = parseFloat(fairyCell.getAttribute('data-id'))
+          if (fairyCellIndex === 80) {
+            fairyCellIndex = fairyCellIndex + width - 1
+          } else {
+            fairyCellIndex -= 1
+          }
+          fairyCell = cells[fairyCellIndex]
+          fairyCell.classList.add('fairyG')
+          if (fairyCell.classList.contains('player')) {
+            fairyCell.classList.replace('fairyG', 'skull-and-crossbones')
             cells[frogIndex].classList.remove('player')
             cells[frogIndex] = 95
             setTimeout(function(){
