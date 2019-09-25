@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="http://allfont.net/allfont.css?fonts=shrek" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="scripts/app.js"></script>
   <title>Shrek Swamp Snatcher</title>
@@ -25,20 +26,23 @@
       <!-- SCROLL -->
       <div class="scroll">
         <img src="./images/scroll.png" alt="scroll">
+        <div class="save-text">You have <span class="timer">02:00</span> minutes to save Puss in Boots, Donkey & Princess Fiona
+          <div class="buttons">
+            <button class="button is-success is-large is-outlined" id="start">Start</button>
+            <button class="button is-success is-large is-outlined" id="reset">Reset</button>
+          </div>
+          <h3>SCORE</h3>
+        </div>
       </div>
         <!-- START AND RESET BUTTONS -->
-      <div class="buttons">
-        <button class="start">Start</button>
-        <button class="reset">Reset</button>
-      </div>
+      
 
         <!-- TIMER PROGRESS BAR -->
-        <div>You have <span class="timer">02:00</span> minutes to save Puss in Boots, Donkey & Princess Fiona!</div>
-      
+        
 
         <!-- SAVED CHARACTERS SECTION -->
       <div class="saved-chars">
-        SAVED
+        <p>SAVED</p>
         <div class="puss">
           <img src="http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Puss-2-icon.png" alt="puss">
         </div>
@@ -55,6 +59,6 @@
   
 </body>
 <footer>
-    <p>Lydia Dalrymple</p>
+    <p> &#169; Lydia Dalrymple</p>
   </footer>
 </html>

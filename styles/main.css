@@ -9,6 +9,7 @@ main {
   justify-content: space-between;
   align-items: center;
   width: 90%;
+  color: black;
 }
 
 section:first-of-type {
@@ -22,7 +23,7 @@ section:last-of-type {
   flex: 1;
   height: 80vh;
   justify-content: center;
-  padding: 40px;
+  padding: 0 0 0 40px;
 }
 
 body {
@@ -35,7 +36,10 @@ body {
   background-image: url(https://vignette.wikia.nocookie.net/shrek/images/b/b7/17882.png/revision/latest?cb=20190221214646);
   /* background-image: url(https://i.imgur.com/UpkGCs5.jpg); */
   /* background-size: 1000px; */
-  background-size: 1500px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: 1550px;
+
 }
 .grid {
   display: flex;
@@ -43,11 +47,12 @@ body {
   align-items: center;
   flex-wrap: wrap;
   flex-grow: 1;
-  height: 100%;
+  height: 90%;
   width: 600px;
   justify-content: center;
   /* max-width: 600px; */
   opacity: 0.9;
+  border-radius: 20px;
 }
 
 .grid div {
@@ -55,14 +60,36 @@ body {
   height: 10%;
   width: 10%;
   border: 0.5px solid black;
+  border-radius: 5px;
 
+}
+
+.save-text {
+  font-family: 'Shrek', 'arial';
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 2px #b9cf35;
+  min-height: 70%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  
+}
+
+.saved-chars > p {
+  font-family: 'Shrek', 'arial';
+  font-size: 40px;
+  text-shadow: 4px 4px 4px #b9cf35;
+  margin: 0;
 }
 
 .grid div.player {
   background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Shrek-icon.png);
-  background-size: 53px;
+  background-size: 48px;
   background-position-x: 0;
   background-position-y: 0;
+  background-position: center;
+
 }
 
 .grid div.safety {
@@ -120,10 +147,11 @@ body {
 }
 
 .grid div.log {
-  background-color: brown;
+  background-color: #8B4513;
   background-size: 60px;
   background-position-x: 0;
   background-position-y: 0;
+  border: 2px solid #662200;
 }
 
 .skull-and-crossbones {
@@ -144,10 +172,15 @@ body {
   background-position-y: 0;
 }
 
+.scroll {
+  display: flex;
+  flex-direction: row;
+}
+
 .scroll img {
   /* height: 350px; */
-  width: 70%;
-  height: auto;
+  width: 400px;
+  height: 400px;
   
 }
 
@@ -216,9 +249,77 @@ body {
 .buttons {
   display: flex;
   justify-content: center;
-
+  justify-content: space-evenly;
+  padding-top: 10px;
 }
 
 .timer {
   border: 2px solid black;
+  font-size: 30px;
+  padding: 5px;
+  margin: 10px 0px;
+  background-color: #82b74b;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  background-color: #82b74b;
+  opacity: 0.5;
+}
+
+footer > p {
+  color: black;
+  opacity: 1;
+}
+
+.baby {
+  background-image: url(https://www.models-resource.com/resources/big_icons/13/12685.png);
+  background-size: 40px;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pig {
+  background-image: url(https://www.models-resource.com/resources/big_icons/13/12691.png);
+  background-size: 60px;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.gingerbread {
+  background-image: url(../images/59f878753cec115efb36238a.png);
+  background-size: 30px;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#start {
+  color: black;
+  border:2px solid black;
+  font-size: 15px;
+  background-color: #82b74b;
+  
+}
+
+#start:hover {
+  background-color: #82b74b;
+  color:white;
+}
+
+#reset {
+  color: black;
+  border:2px solid black;
+  font-size: 15px;
+  background-color: #82b74b;
+  
+}
+
+#reset:hover {
+  background-color: #82b74b;
+  color:white;
 }

@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded',() => {
   const height = 10
   const cells = []
   let frogIndex = 95
-  const startButton = document.querySelector('.start')
+  const startButton = document.querySelector('#start')
   const riverCells = document.querySelectorAll('.river')
   const gridSection = document.querySelector('.grid-parent')
   const losingText = document.querySelector('.losing-text')
   const winningText = document.querySelector('.winning-text')
-  const resetButton = document.querySelector('.reset')
+  const resetButton = document.querySelector('#reset')
   const savedChars = document.querySelector('.saved-chars')
   const fiona = document.querySelector('.fiona')
   const puss = document.querySelector('.puss')
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded',() => {
   // STYLING THE GRID
 
   cells.forEach(function (cell, index) {
-    if (index >= 40 && index <= 59 || index >= 0 && index <= 9 ) {
+    if (index >= 40 && index <= 59 || index >= 0 && index <= 9 || index >= 90 && index <= 99) {
       cell.classList.add('safety')
     }
     if (index === 3) {
@@ -74,15 +74,24 @@ document.addEventListener('DOMContentLoaded',() => {
     if (index >= 60 && index <= 99) {
       cell.classList.add('swamp')
     }
-    if (index >= 90 && index <= 99) {
-      cell.classList.add('swamp')
-    }
+    // if (index >= 90 && index <= 99) {
+    //   cell.classList.add('swamp')
+    // }
     if (index >= 80 && index <= 89 && index % 2 === 0) {
       cell.classList.add('fairyG')
     }
     if (index >= 60 && index <= 69 && index % 2 === 1) {
       cell.classList.add('car')
     }
+    if (index === 44) {
+      cell.classList.add('gingerbread')
+    }
+    if (index === 52 || index === 47) {
+      cell.classList.add('baby')
+    } 
+    if (index === 74) {
+      cell.classList.add('pig')
+    } 
     if (index === 95) {
       cell.classList.add('player')
     }
@@ -351,7 +360,7 @@ document.addEventListener('DOMContentLoaded',() => {
       case 40: if (y < width - 1)frogIndex += width
       // if y is smaller than 9, 
         break
-      case 32: if (y > 0) frogIndex -= width * 2
+      case 74: if (y > 0) frogIndex -= width * 2
 
         // frogRunOver()
         // frogDrowned()
@@ -399,6 +408,25 @@ document.addEventListener('DOMContentLoaded',() => {
         }, 800)
       }
     }
+
+
+    function bonusPoints() {
+
+      if (cells[frogIndex].classList.contains('gingerbread')) {
+        console.log('success')
+        cells[frogIndex].classList.remove('gingerbread')
+        .innerHTML = 'BONUS POINT'
+      } else if (cells[frogIndex].classList.contains('baby')) {
+        console.log('success')
+        cells[frogIndex].classList.remove('baby')
+      } else if (cells[frogIndex].classList.contains('pig')) {
+        console.log('success')
+        cells[frogIndex].classList.remove('pig')
+      }
+
+    }
+
+    bonusPoints()
 
     
 
