@@ -242,7 +242,7 @@ body {
   font-size: 90px;
   text-shadow: 5px 5px 5px #b9cf35;
   text-align: center;
-  color: white;
+  color: palevioletred;
   margin-top: 180px;
 }
 
@@ -261,7 +261,7 @@ body {
   font-family: 'Shrek', 'arial';
   font-size: 70px;
   text-shadow: 5px 5px 5px #b9cf35;
-  color: white;
+  color:palevioletred;
   max-height: 600px;
   max-width: 600px;
   text-align: center;

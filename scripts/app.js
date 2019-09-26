@@ -453,7 +453,6 @@ document.addEventListener('DOMContentLoaded',() => {
     
     // PLAY GAME FUNCTION 
 
-
     frogDrowned(frogIndex)
     frogRunOver(frogIndex)
     fionaSaved()
