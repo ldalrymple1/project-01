@@ -8,10 +8,22 @@ main {
   flex-grow: 1;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
+  width: 100%;
   color: black;
   height: 100%;
+  background-image: url(../images/shrek-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  
+  
 }
+
+/* .wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+} */
 
 header {
   background-color: #82b74b;
@@ -22,7 +34,8 @@ header {
 
 header > img {
   height: 50px;
-  width: 120px;
+  width: 150px;
+  padding-left: 30px;
 }
 
 header > p {
@@ -50,12 +63,10 @@ body {
   height: 100vh;
   margin: 0;
   /* justify-content: center; */
-  background-image: url(../images/shrek-background.png);
+  /* background-image: url(../images/shrek-background.png); */
   /* background-image: url(https://i.imgur.com/UpkGCs5.jpg); */
   /* background-size: 1000px; */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-size: 100%;
+  
   /* background-size: 1500px; */
 
 }
@@ -71,6 +82,7 @@ body {
   /* max-width: 600px; */
   opacity: 0.9;
   border-radius: 20px;
+  padding-left: 10px;
 }
 
 .grid div {
@@ -94,15 +106,19 @@ body {
   align-items: center;
   color: white;
   width: 35%;
+  padding-right: 15px;
+  padding-top: 30px;
   
 }
 
 .saved-chars > p {
-  font-family: 'Shrek', 'arial';
   font-size: 40px;
-  text-shadow: 4px 4px 4px #b9cf35;
+  text-shadow: 3px 3px 3px #b9cf35;
+  color: white;
+  font-family: 'Cinzel Decorative', cursive;
   margin: 0;
   text-align: left;
+  font-weight: bold;
 }
 
 .grid div.player {
@@ -205,7 +221,7 @@ body {
 
 .scroll img {
   /* height: 350px; */
-  width: 570px;
+  width: 575px;
   height: 400px;
   padding-left: 40px;
   
@@ -226,18 +242,26 @@ body {
   font-family: 'Shrek', 'arial';
   font-size: 90px;
   text-shadow: 5px 5px 5px #b9cf35;
+  text-align: center;
+  color: white;
+  margin-top: 180px;
+}
+
+.reset-button-gameover {
+  text-align: center;
 }
 
 .winning-text {
   font-family: 'Shrek', 'arial';
   font-size: 90px;
   text-shadow: 5px 5px 5px #b9cf35;
+  color: white;
 }
 
 .saved-chars {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
   /* width: 100px; */
   /* height: 200px; */
 }
@@ -281,12 +305,13 @@ footer {
   background-color: #82b74b;
   /* opacity: 0.5; */
   min-height: 50px;
+  height: 50px;
 }
 
 footer > p {
   color: black;
   /* opacity: 1; */
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Cinzel Decorative', cursive;
 
 }
@@ -319,9 +344,10 @@ footer > p {
 #start {
   color: black;
   border:2px solid black;
-  font-size: 15px;
+  font-size: 20px;
   background-color: #82b74b;
-  border-radius: 25px;
+  border-radius: 15px;
+  font-family: 'Cinzel Decorative', cursive;
   
 }
 
@@ -333,9 +359,10 @@ footer > p {
 #reset {
   color: black;
   border:2px solid black;
-  font-size: 15px;
+  font-size: 20px;
   background-color: #82b74b;
-  border-radius: 25px;
+  border-radius: 15px;
+  font-family: 'Cinzel Decorative', cursive;
   
 }
 
@@ -363,18 +390,40 @@ footer > p {
     left: 90px; 
     width: 65%; 
     text-align: center;
-    font-size: 15px;
+    font-size: 23px;
     font-family: 'Cinzel Decorative', cursive;
     max-width: 550px;
+    text-decoration: underline;
+ }
+
+ .image-scroll > p {
+  position: absolute; 
+  top: 80px; 
+  left: 110px; 
+  width: 65%; 
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Cinzel Decorative', cursive;
+  max-width: 550px;
+  padding-top: 40px;
  }
 
  h3 {
-  font-family: 'Shrek', 'arial';
   font-size: 40px;
-  text-shadow: 4px 4px 4px #b9cf35;
-  color: black;
+  text-shadow: 3px 3px 3px #b9cf35;
+  color: white;
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: bold;
  }
 
  .score-board {
    padding-top: 50px;
+   
  }
+
+ @media only screen and (max-width: 840px) {
+
+  section:last-of-type {
+    display: none;
+  }
+}

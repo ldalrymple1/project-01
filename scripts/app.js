@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded',() => {
   const startButton = document.querySelector('#start')
   const riverCells = document.querySelectorAll('.river')
   const gridSection = document.querySelector('.grid-parent')
-  const losingText = document.querySelector('.losing-text')
+  const losingScreen = document.querySelector('.losing-screen')
   const winningText = document.querySelector('.winning-text')
   const resetButton = document.querySelector('#reset')
   const savedChars = document.querySelector('.saved-chars')
@@ -21,14 +21,29 @@ document.addEventListener('DOMContentLoaded',() => {
   // const progressBar = document.querySelector('#progressBar')
   const basicUsage = document.querySelector('#basicUsage')
   const scoreBoard = document.querySelector('.score')
+  const secondSection = document.querySelector('.second-section')
+  const playAgain = document.createElement('button')
 
+
+
+  // AUDIO CLIPS STORED IN VARIABLES
+
+  const donkeySound = new Audio('audio_clips/wow.mp3')
+  const fionaSound = new Audio('audio_clips/kind.mp3')
+  const LordF = new Audio('audio_clips/ginger.mp3')
+  const pussSound = new Audio('audio_clips/annoying.mp3')
+  const startButtonSound = new Audio('audio_clips/tunnel.mp3') 
+  const startButtonSound2 = new Audio('audio_clips/what-are-you-doing-in-my-swamp-1.mp3')
+  const bonusPointsSound = new Audio('audio_clips/Coin-pick-up-sound-effect.mp3')
+  const doubleJump = new Audio('audio_clips/Boing-sound-effect.mp3')
+  const gameOver = new Audio('audio_clips/itsallogrenow1.mp3')
   
 
   
 
   // HIDING THINGS TO REAPPEAR ON EVENT LISTENERS
 
-  losingText.classList.add('hide')
+  // losingScreen.classList.add('hide')
   winningText.classList.add('hide')
   fiona.classList.add('hide')
   puss.classList.add('hide')
@@ -108,6 +123,13 @@ document.addEventListener('DOMContentLoaded',() => {
 
   // What happens when someone clicks on start button. Initiates the game
   startButton.addEventListener('click', () => {
+
+    startButtonSound2.play()
+
+    setTimeout(function(){
+      startButtonSound.play()
+    }, 5000)
+    
    
     function startTimer(duration, display) {
       var timer = duration, minutes, seconds
@@ -127,9 +149,9 @@ document.addEventListener('DOMContentLoaded',() => {
     }
 
     
-    var twoMinutes = 60 * 2,
+    var oneMinute = 60 * 1,
       display = document.querySelector('.timer')
-    startTimer(twoMinutes, display)
+    startTimer(oneMinute, display)
 
 
 
@@ -179,10 +201,11 @@ document.addEventListener('DOMContentLoaded',() => {
             cells[frogIndex] = 95
             setTimeout(function(){
               grid.classList.add('hide')
+              secondSection.classList.add('hide')
             }, 900)
     
             setTimeout(function(){
-              losingText.classList.replace('hide', 'losing-text')
+              losingScreen.classList.replace('hide', 'losing-text')
             }, 1000)
           }
 
@@ -209,10 +232,14 @@ document.addEventListener('DOMContentLoaded',() => {
             cells[frogIndex] = 95
             setTimeout(function(){
               grid.classList.add('hide')
+              secondSection.classList.add('hide')
             }, 900)
     
             setTimeout(function(){
-              losingText.classList.replace('hide', 'losing-text')
+              losingScreen.classList.replace('hide', 'losing-text')
+              losingScreen.appendChild(playAgain)
+
+
             }, 1000)
             
 
@@ -296,7 +323,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         })
 
-      }, 2000)
+      }, 800)
 
       
       
@@ -336,6 +363,7 @@ document.addEventListener('DOMContentLoaded',() => {
   // KEY UP- frog moving. The game?
 
   document.addEventListener('keyup', (e) => {
+    
     // when the key is lifted up, remove the avatar from that grid
     cells[frogIndex].classList.remove('player') 
     // x = 
@@ -361,6 +389,7 @@ document.addEventListener('DOMContentLoaded',() => {
       // if y is smaller than 9, 
         break
       case 74: if (y > 0) frogIndex -= width * 2
+        doubleJump.play()
 
         // frogRunOver()
         // frogDrowned()
@@ -377,6 +406,7 @@ document.addEventListener('DOMContentLoaded',() => {
       if (cells[frogIndex].classList.contains('donkey')) {
         cells[frogIndex].classList.remove('player')
         cells[frogIndex].classList.replace('donkey', 'trophy')
+        donkeySound.play()
         frogIndex = 95
         setTimeout(function () {
           donkey.classList.replace('hide', 'donkey')
@@ -388,6 +418,7 @@ document.addEventListener('DOMContentLoaded',() => {
       if (cells[frogIndex].classList.contains('fiona')) {
         cells[frogIndex].classList.remove('player')
         cells[frogIndex].classList.replace('fiona', 'trophy')
+        fionaSound.play()
         frogIndex = 95
         setTimeout(function () {
           fiona.classList.replace('hide', 'fiona')
@@ -402,6 +433,7 @@ document.addEventListener('DOMContentLoaded',() => {
       if (cells[frogIndex].classList.contains('puss')) {
         cells[frogIndex].classList.remove('player')
         cells[frogIndex].classList.replace('puss', 'trophy')
+        pussSound.play()
         frogIndex = 95
         setTimeout(function () {
           puss.classList.replace('hide', 'puss')
@@ -420,6 +452,8 @@ document.addEventListener('DOMContentLoaded',() => {
       
       if (cells[frogIndex].classList.contains('gingerbread')) {
         console.log('success')
+        bonusPointsSound.play()
+        LordF.play()
         cells[frogIndex].classList.remove('gingerbread')
         setTimeout(function () {
           scoreBoard.innerHTML = '50 BONUS POINTS'
@@ -434,6 +468,7 @@ document.addEventListener('DOMContentLoaded',() => {
         
       } else if (cells[frogIndex].classList.contains('baby')) {
         console.log('success')
+        bonusPointsSound.play()
         cells[frogIndex].classList.remove('baby')
         setTimeout(function () {
           scoreBoard.innerHTML = '100 BONUS POINTS'
@@ -446,6 +481,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
       } else if (cells[frogIndex].classList.contains('pig')) {
         console.log('success')
+        bonusPointsSound.play()
         cells[frogIndex].classList.remove('pig')
         setTimeout(function () {
           scoreBoard.innerHTML = '20 BONUS POINTS'
@@ -490,19 +526,23 @@ document.addEventListener('DOMContentLoaded',() => {
     // console.log(frogIndex)
 
     
+
+
     function frogDrowned(frogIndex){
       if (cells[frogIndex].classList.contains('log')) {
         console.log('You are on a log')
       } else if (cells[frogIndex].classList.contains('river')) {
         console.log('you drowned!')
         cells[frogIndex].classList.replace('river', 'skull-and-crossbones')
+        gameOver.play()
         cells[frogIndex].classList.remove('player')
         setTimeout(function () {
           grid.classList.add('hide')
+          secondSection.classList.add('hide')
         }, 900)
 
         setTimeout(function () {
-          losingText.classList.replace('hide', 'losing-text')
+          losingScreen.classList.replace('hide', 'losing-text')
         }, 1000)
       }
 
@@ -524,15 +564,17 @@ document.addEventListener('DOMContentLoaded',() => {
     
       if (cells[frogIndex].classList.contains('car')) {
         console.log('You have been run over!', cells[frogIndex])
+        gameOver.play()
         cells[frogIndex].classList.replace('car', 'skull-and-crossbones')
         cells[frogIndex].classList.remove('player')
         cells[frogIndex] = 95
         setTimeout(function(){
           grid.classList.add('hide')
+          secondSection.classList.add('hide')
         }, 900)
 
         setTimeout(function(){
-          losingText.classList.replace('hide', 'losing-text')
+          losingScreen.classList.replace('hide', 'losing-text')
         }, 1000)
 
       }
@@ -558,6 +600,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 
     
+  
 
       
 
@@ -628,6 +671,7 @@ document.addEventListener('DOMContentLoaded',() => {
     donkeySaved()
     pussSaved()
     winningCondition()
+    
     
     
 
