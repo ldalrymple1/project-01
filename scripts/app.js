@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded',() => {
   const donkey = document.querySelector('.donkey')
   // const progressBar = document.querySelector('#progressBar')
   const basicUsage = document.querySelector('#basicUsage')
+  const scoreBoard = document.querySelector('.score')
 
   
 
@@ -183,8 +184,6 @@ document.addEventListener('DOMContentLoaded',() => {
             setTimeout(function(){
               losingText.classList.replace('hide', 'losing-text')
             }, 1000)
-            
-
           }
 
         })
@@ -204,6 +203,7 @@ document.addEventListener('DOMContentLoaded',() => {
           fairyCell = cells[fairyCellIndex]
           fairyCell.classList.add('fairyG')
           if (fairyCell.classList.contains('player')) {
+            console.log('it is a fairy G sq')
             fairyCell.classList.replace('fairyG', 'skull-and-crossbones')
             cells[frogIndex].classList.remove('player')
             cells[frogIndex] = 95
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded',() => {
           }
 
         })
-      }, 1000)
+      }, 1500)
     }
 
     carMovement()
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         })
 
-      }, 5000)
+      }, 2000)
 
       
       
@@ -410,23 +410,56 @@ document.addEventListener('DOMContentLoaded',() => {
     }
 
 
-    function bonusPoints() {
 
+    // BONUS POINTS
+
+    let score = 0
+
+    function bonusPoints(score) {
+      
+      
       if (cells[frogIndex].classList.contains('gingerbread')) {
         console.log('success')
         cells[frogIndex].classList.remove('gingerbread')
-        .innerHTML = 'BONUS POINT'
+        setTimeout(function () {
+          scoreBoard.innerHTML = '50 BONUS POINTS'
+        }, 500)
+        setTimeout(function () {
+          scoreBoard.innerHTML = score + 50
+        }, 2000)
+        console.log(score)
+        score = score + 50
+        console.log(score)
+
+        
       } else if (cells[frogIndex].classList.contains('baby')) {
         console.log('success')
         cells[frogIndex].classList.remove('baby')
+        setTimeout(function () {
+          scoreBoard.innerHTML = '100 BONUS POINTS'
+        }, 500)
+        setTimeout(function () {
+          scoreBoard.innerHTML = score + 100
+        }, 2000)
+        score = score + 100
+        console.log(score)
+
       } else if (cells[frogIndex].classList.contains('pig')) {
         console.log('success')
         cells[frogIndex].classList.remove('pig')
+        setTimeout(function () {
+          scoreBoard.innerHTML = '20 BONUS POINTS'
+        }, 500)
+        setTimeout(function () {
+          scoreBoard.innerHTML = score + 20
+        }, 2000)
+        score = score + 20
+        console.log(score)
       }
 
     }
 
-    bonusPoints()
+    bonusPoints(score)
 
     
 
