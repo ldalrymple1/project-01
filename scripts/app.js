@@ -18,11 +18,10 @@ document.addEventListener('DOMContentLoaded',() => {
   const fiona = document.querySelector('.fiona')
   const puss = document.querySelector('.puss')
   const donkey = document.querySelector('.donkey')
-  // const progressBar = document.querySelector('#progressBar')
-  const basicUsage = document.querySelector('#basicUsage')
   const scoreBoard = document.querySelector('.score')
   const secondSection = document.querySelector('.second-section')
   const playAgain = document.createElement('button')
+  const gameOverReset = document.querySelector('.game-over-reset')
 
 
 
@@ -70,45 +69,29 @@ document.addEventListener('DOMContentLoaded',() => {
   cells.forEach(function (cell, index) {
     if (index >= 40 && index <= 59 || index >= 0 && index <= 9 || index >= 90 && index <= 99) {
       cell.classList.add('safety')
-    }
-    if (index === 3) {
+    } if (index === 3) {
       cell.classList.add('puss')
-    }
-    if (index === 5) {
+    } if (index === 5) {
       cell.classList.add('donkey')
-    }
-    if (index === 7) {
+    } if (index === 7) {
       cell.classList.add('fiona')
-    }
-    
-    if (index >= 15 && index <= 17 || index >= 23 && index <= 26 || index >= 23 && index <= 26 || index >= 31 && index <= 33 || index === 37 || index === 38 ) {
+    } if (index >= 15 && index <= 17 || index >= 23 && index <= 26 || index >= 23 && index <= 26 || index >= 31 && index <= 33 || index === 37 || index === 38 ) {
       cell.classList.add('log')
-    }
-    if (index >= 10 && index <= 14 || index >= 18 && index <= 22 || index >= 27 && index <= 30 || index >= 34 && index <= 36 || index === 39) {
+    } if (index >= 10 && index <= 14 || index >= 18 && index <= 22 || index >= 27 && index <= 30 || index >= 34 && index <= 36 || index === 39) {
       cell.classList.add('river')
-    }
-    if (index >= 60 && index <= 99) {
+    } if (index >= 60 && index <= 99) {
       cell.classList.add('swamp')
-    }
-    // if (index >= 90 && index <= 99) {
-    //   cell.classList.add('swamp')
-    // }
-    if (index >= 80 && index <= 89 && index % 2 === 0) {
+    } if (index >= 80 && index <= 89 && index % 2 === 0) {
       cell.classList.add('fairyG')
-    }
-    if (index >= 60 && index <= 69 && index % 2 === 1) {
+    } if (index >= 60 && index <= 69 && index % 2 === 1) {
       cell.classList.add('car')
-    }
-    if (index === 44) {
+    } if (index === 44) {
       cell.classList.add('gingerbread')
-    }
-    if (index === 52 || index === 47) {
+    } if (index === 52 || index === 47) {
       cell.classList.add('baby')
-    } 
-    if (index === 74) {
+    } if (index === 74) {
       cell.classList.add('pig')
-    } 
-    if (index === 95) {
+    } if (index === 95) {
       cell.classList.add('player')
     }
 
@@ -183,36 +166,6 @@ document.addEventListener('DOMContentLoaded',() => {
     function carMovement() {
 
       setInterval(() => {
-        const carCells = document.querySelectorAll('.car')
-        carCells.forEach(carCell => {
-          carCell.classList.remove('car')
-          carCell.classList.add('swamp')
-          let carCellIndex = parseFloat(carCell.getAttribute('data-id'))
-          if (carCellIndex === 69 || carCellIndex === 89) {
-            carCellIndex = carCellIndex - width + 1
-          } else {
-            carCellIndex += 1
-          }
-          carCell = cells[carCellIndex]
-          carCell.classList.add('car')
-          if (carCell.classList.contains('player')) {
-            carCell.classList.replace('car', 'skull-and-crossbones')
-            cells[frogIndex].classList.remove('player')
-            cells[frogIndex] = 95
-            setTimeout(function(){
-              grid.classList.add('hide')
-              secondSection.classList.add('hide')
-            }, 900)
-    
-            setTimeout(function(){
-              losingScreen.classList.replace('hide', 'losing-text')
-            }, 1000)
-          }
-
-        })
-      }, 500)
-
-      setInterval(() => {
         const fairyCells = document.querySelectorAll('.fairyG')
         fairyCells.forEach(fairyCell => {
           fairyCell.classList.remove('fairyG')
@@ -246,8 +199,40 @@ document.addEventListener('DOMContentLoaded',() => {
           }
 
         })
-      }, 1500)
+      }, 1000)
+
+
+      setInterval(() => {
+        const carCells = document.querySelectorAll('.car')
+        carCells.forEach(carCell => {
+          carCell.classList.remove('car')
+          carCell.classList.add('swamp')
+          let carCellIndex = parseFloat(carCell.getAttribute('data-id'))
+          if (carCellIndex === 69 || carCellIndex === 89) {
+            carCellIndex = carCellIndex - width + 1
+          } else {
+            carCellIndex += 1
+          }
+          carCell = cells[carCellIndex]
+          carCell.classList.add('car')
+          if (carCell.classList.contains('player')) {
+            carCell.classList.replace('car', 'skull-and-crossbones')
+            cells[frogIndex].classList.remove('player')
+            cells[frogIndex] = 95
+            setTimeout(function(){
+              grid.classList.add('hide')
+              secondSection.classList.add('hide')
+            }, 900)
+    
+            setTimeout(function(){
+              losingScreen.classList.replace('hide', 'losing-text')
+            }, 1000)
+          }
+
+        })
+      }, 500)
     }
+
 
     carMovement()
 
@@ -562,9 +547,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
     function frogRunOver(frogIndex) {
     
-      if (cells[frogIndex].classList.contains('car')) {
+      if (cells[frogIndex].classList.contains('fairyG') || cells[frogIndex].classList.contains('car') ) {
         console.log('You have been run over!', cells[frogIndex])
         gameOver.play()
+        cells[frogIndex].classList.replace('fairyG', 'skull-and-crossbones')
         cells[frogIndex].classList.replace('car', 'skull-and-crossbones')
         cells[frogIndex].classList.remove('player')
         cells[frogIndex] = 95
@@ -613,6 +599,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
     // RESET BUTTON 
     resetButton.addEventListener('click', () => {
+      location.reload(1)
+    } )
+
+    gameOverReset.addEventListener('click', () => {
       location.reload(1)
     } )
 

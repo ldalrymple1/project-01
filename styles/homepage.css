@@ -38,7 +38,9 @@ p {
 }
 
 .button {
-  color: #b9cf35;
   margin-right: 10px;
   font-family: 'Shrek', 'arial';
+  background-color: #b9cf35 ;
+  color: black;
 }
+
