@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded',() => {
   
-
   // STORED VARIABLES
 
   const grid = document.querySelector('.grid')
@@ -20,8 +19,9 @@ document.addEventListener('DOMContentLoaded',() => {
   const donkey = document.querySelector('.donkey')
   const scoreBoard = document.querySelector('.score')
   const secondSection = document.querySelector('.second-section')
-  const playAgain = document.createElement('button')
   const gameOverReset = document.querySelector('.game-over-reset')
+  const shrekLogo = document.querySelector('.logo')
+  const homepage = document.querySelector('.shrek-homepage')
 
 
 
@@ -38,19 +38,24 @@ document.addEventListener('DOMContentLoaded',() => {
   const gameOver = new Audio('audio_clips/itsallogrenow1.mp3')
   
 
-  
 
   // HIDING THINGS TO REAPPEAR ON EVENT LISTENERS
 
-  // losingScreen.classList.add('hide')
   winningText.classList.add('hide')
   fiona.classList.add('hide')
   puss.classList.add('hide')
   donkey.classList.add('hide')
 
 
-  
-  
+  // ANIMATION FOR SHREK LOGO
+
+  shrekLogo.addEventListener('mouseover', e => {
+    shrekLogo.classList.add('animated')
+    shrekLogo.classList.add('flip')
+
+  })
+
+
   // LOADING THE GRID
 
   for (let i = 0; i < width ** 2; i++) {
@@ -94,17 +99,11 @@ document.addEventListener('DOMContentLoaded',() => {
     } if (index === 95) {
       cell.classList.add('player')
     }
-
   })  
 
 
+  // EVENT LISTENER FOR THE START BUTTON
 
-
-  
-
-
-
-  // What happens when someone clicks on start button. Initiates the game
   startButton.addEventListener('click', () => {
 
     startButtonSound2.play()
@@ -112,8 +111,10 @@ document.addEventListener('DOMContentLoaded',() => {
     setTimeout(function(){
       startButtonSound.play()
     }, 5000)
+
     
-   
+    // TIMER
+  
     function startTimer(duration, display) {
       var timer = duration, minutes, seconds
       setInterval(function () {
@@ -131,38 +132,12 @@ document.addEventListener('DOMContentLoaded',() => {
       }, 1000)
     }
 
-    
     var oneMinute = 60 * 1,
       display = document.querySelector('.timer')
     startTimer(oneMinute, display)
 
 
-
-
-
-
-
-
-    // function progress(timeleft, timetotal, progressBar) {
-    //   var progressBarWidth = timeleft * $element.width() / timetotal
-    //   $element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft / 60) + ':' + timeleft % 60)
-    //   if (timeleft > 0) {
-    //     setTimeout(function () {
-    //       progress(timeleft - 1, timetotal, $element)
-    //     }, 1000)
-    //   }
-    // }
-
-    // progress(600, 600, $('#progressBar'))
-
-
-
-
-
-
-
-    // Set interval to get CARS to move
-
+    // Set interval to get LORD F AND FAIRY G to move
     function carMovement() {
 
       setInterval(() => {
@@ -191,10 +166,7 @@ document.addEventListener('DOMContentLoaded',() => {
             setTimeout(function(){
               losingScreen.classList.replace('hide', 'losing-text')
               losingScreen.appendChild(playAgain)
-
-
             }, 1000)
-            
 
           }
 
@@ -228,13 +200,12 @@ document.addEventListener('DOMContentLoaded',() => {
               losingScreen.classList.replace('hide', 'losing-text')
             }, 1000)
           }
-
         })
       }, 500)
     }
 
-
     carMovement()
+
 
     // Set Interval to get LOGS TO MOVE
 
@@ -268,84 +239,18 @@ document.addEventListener('DOMContentLoaded',() => {
           }
           logCell.classList.add('log')
 
-          
-
-      
-          
-          // if (frogOnLog === true) {
-          //   cells[frogIndex] --
-
-
-          //   // cells[frogIndex].classList.remove('player')
-          //   // cells[frogIndex] = 95
-          //   // setTimeout(function(){
-          //   //   grid.classList.add('hide')
-          //   // }, 900)
-    
-          //   // setTimeout(function(){
-          //   //   losingText.classList.replace('hide', 'losing-text')
-          //   // }, 1000)
-          // }
-
-          
-
-          // function frogOnLog(frogIndex, logCell) {
-          //   if (cells[frogIndex] === logCell) {
-          //     return true
-          //   } else {
-          //     false
-          //   }
-          // }
-
-          // console.log(frogIndex)
-          // console.log(frogOnLog())
-          
-          // const frogOnLog = logCell.classList.contains('player')
-          // console.log(Boolean(frogOnLog))
-
-          
-
-
         })
 
       }, 800)
-
-      
-      
 
     }
 
     logMovement()
 
-
-
-    // logCells.forEach((logCell) => {
-    //   setInterval(() => {
-    //     
-    //     if (brownX === 0) {
-    //       brownCell1 = brownCell1 + width - 1
-    //       brownX = brownX + width - 1
-    //     } else {
-    //       brownCell1 = brownCell1 - 1
-    //       brownX = brownX - 1
-    //     }
-    //     logCell.classList.add('log')
-        
-       
-    //   }, 1000)
-
-
-    // })
-
   })
 
-  
-  
-  
 
-
-
-  // KEY UP- frog moving. The game?
+  // KEY UP EVENT LISTENER
 
   document.addEventListener('keyup', (e) => {
     
@@ -376,17 +281,15 @@ document.addEventListener('DOMContentLoaded',() => {
       case 74: if (y > 0) frogIndex -= width * 2
         doubleJump.play()
 
-        // frogRunOver()
-        // frogDrowned()
-
     }
-
     // when the key is pressed add the avatar to that grid
     cells[frogIndex].classList.add('player')
 
+
+
+    // FUNCTIONS FOR SAVING CHARACTERS
     
-    
-    
+    // DONKEY SAVED
     function donkeySaved() {
       if (cells[frogIndex].classList.contains('donkey')) {
         cells[frogIndex].classList.remove('player')
@@ -398,7 +301,7 @@ document.addEventListener('DOMContentLoaded',() => {
         }, 800)
       }
     }
-
+    // FIONA SAVED 
     function fionaSaved() {
       if (cells[frogIndex].classList.contains('fiona')) {
         cells[frogIndex].classList.remove('player')
@@ -410,10 +313,7 @@ document.addEventListener('DOMContentLoaded',() => {
         }, 800)
       }
     }
-
-  
- 
-
+    // PUSS IN BOOTS SAVED 
     function pussSaved() {
       if (cells[frogIndex].classList.contains('puss')) {
         cells[frogIndex].classList.remove('player')
@@ -427,16 +327,12 @@ document.addEventListener('DOMContentLoaded',() => {
     }
 
 
-
     // BONUS POINTS
-
     let score = 0
-
     function bonusPoints(score) {
       
       
       if (cells[frogIndex].classList.contains('gingerbread')) {
-        console.log('success')
         bonusPointsSound.play()
         LordF.play()
         cells[frogIndex].classList.remove('gingerbread')
@@ -482,36 +378,8 @@ document.addEventListener('DOMContentLoaded',() => {
 
     bonusPoints(score)
 
-    
 
-
-    
-    
-
-
-
-
-    // Declaring the frogInHome function
-    // function frogInHome(frogIndex) {
-    //   if (frogIndex === 3 || frogIndex === 5 || frogIndex === 5 ) {
-    //     cells[frogIndex].classList.remove('donkey')
-    //     savedChars.classList.add('puss')
-
-    //     setTimeout(function(){
-    //       grid.classList.add('hide')
-    //     }, 900)
-        
-    //     setTimeout(function(){
-    //       winningText.classList.replace('hide', 'winning-text')
-    //     }, 1000)
-    //     // location.reload()
-    //     // cells[frogIndex] = 95
-    //   }
-    // }
-    // console.log(frogIndex)
-
-    
-
+    // CHECKING IF DROWNED FUNCTION
 
     function frogDrowned(frogIndex){
       if (cells[frogIndex].classList.contains('log')) {
@@ -521,6 +389,7 @@ document.addEventListener('DOMContentLoaded',() => {
         cells[frogIndex].classList.replace('river', 'skull-and-crossbones')
         gameOver.play()
         cells[frogIndex].classList.remove('player')
+
         setTimeout(function () {
           grid.classList.add('hide')
           secondSection.classList.add('hide')
@@ -530,20 +399,11 @@ document.addEventListener('DOMContentLoaded',() => {
           losingScreen.classList.replace('hide', 'losing-text')
         }, 1000)
       }
-
-
-      // const riverCells = document.querySelector('.river')
-      // if (frogIndex === riverCells) {
-      //   console.log('You drowned!')
-      //   cells[frogIndex].classList.replace('river', 'skull-and-crossbones')
-      //   cells[frogIndex].classList.remove('player')
-      // }
     } 
       
-    
 
        
-    
+    // CHECKING IF RUN OVER FUNCTION
 
     function frogRunOver(frogIndex) {
     
@@ -567,7 +427,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
     }
 
-
+    // WINNING CONDITION FUNCTION
 
     function winningCondition() {
       if (cells[3].classList.contains('trophy') && cells[5].classList.contains('trophy') && cells[7].classList.contains('trophy')) {
@@ -579,23 +439,8 @@ document.addEventListener('DOMContentLoaded',() => {
         setTimeout(function () {
           winningText.classList.replace('hide', 'winning-text')
         }, 1000)
-
       } 
-
     }
-
-
-    
-  
-
-      
-
-
-
-
-
-   
-    
 
     // RESET BUTTON 
     resetButton.addEventListener('click', () => {
@@ -605,89 +450,15 @@ document.addEventListener('DOMContentLoaded',() => {
     gameOverReset.addEventListener('click', () => {
       location.reload(1)
     } )
-
-
-
-
-
     
+    // PLAY GAME FUNCTION 
 
 
-    
-
-
-    
-
-    // setInterval(() => {
-    //   cells[brownCell1].classList.remove('log')
-    //   cells[brownCell1].classList.add('river')
-    //   if (brownX === 0) {
-    //     brownCell1 = brownCell1 + width - 1
-    //     brownX = brownX + width - 1
-    //   } else {
-    //     brownCell1 = brownCell1 - 1
-    //     brownX = brownX - 1
-    //   }
-    //   cells[brownCell1].classList.add('log')
-    //   console.log(brownCell1, brownX, brownY)
-     
-    // }, 1000)
-
-
-
-  
-
-    //   cells.forEach(function (cell, index) {
-    //     if (index >= 10 && index <= 39){
-    //       cell.classList.add('safety')
-
-    // // }
-
-    // function movementOfRiver () {
-    //   if (index >= 10 && <= 39) {
-    //     classList
-    //   }
-
-    // }
-
-
-
-    
-    // Win conditions function to check to see if frog makes it to the lily pad
-    // frogInHome(frogIndex)
     frogDrowned(frogIndex)
     frogRunOver(frogIndex)
     fionaSaved()
     donkeySaved()
     pussSaved()
     winningCondition()
-    
-    
-    
-
-
-
-
-
-
   })
-
-  
-  
-
-
-
-  
-
-
 }) 
-
-
-
-
-
-// setInterval (checkCollision, frogdrowned, frog runover, every 60s)
-// if x === width -1 (this means the last column) {
-//   index -= width 1
-// }
-// index = index - width

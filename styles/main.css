@@ -197,11 +197,8 @@ body {
 }
 
 .skull-and-crossbones {
-  background-image: url(../images/goo.png);
-  background-size: 1px;
-  background-position-x: 0;
-  background-position-y: 0;
-  background-position: center;
+  background: url(../images/goo.png) no-repeat center;
+  background-size: scale-down;
 }
 
 .title img {
@@ -223,9 +220,9 @@ body {
 
 .scroll img {
   /* height: 350px; */
-  width: 575px;
-  height: 400px;
-  padding-left: 40px;
+  max-width: 530px;
+  min-height: 400px;
+  padding-left: 90px;
   
 }
 
@@ -262,9 +259,12 @@ body {
 
 .winning-text {
   font-family: 'Shrek', 'arial';
-  font-size: 90px;
+  font-size: 70px;
   text-shadow: 5px 5px 5px #b9cf35;
   color: white;
+  max-height: 600px;
+  max-width: 600px;
+  text-align: center;
 }
 
 .saved-chars {
@@ -398,23 +398,23 @@ footer > p {
     position: absolute; 
     top: 80px; 
     left: 90px; 
-    width: 65%; 
+    width: 60%; 
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
     font-family: 'Cinzel Decorative', cursive;
-    max-width: 550px;
+    max-width: 500px;
     text-decoration: underline;
  }
 
  .image-scroll > p {
   position: absolute; 
   top: 80px; 
-  left: 110px; 
-  width: 65%; 
+  left: 120px; 
+  width: 60%; 
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-family: 'Cinzel Decorative', cursive;
-  max-width: 550px;
+  max-width: 500px;
   padding-top: 40px;
  }
 
