@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded',() => {
       cell.classList.add('log')
     } if (index >= 10 && index <= 14 || index >= 18 && index <= 22 || index >= 27 && index <= 30 || index >= 34 && index <= 36 || index === 39) {
       cell.classList.add('river')
-    } if (index >= 60 && index <= 99) {
+    } if (index >= 60 && index <= 89) {
       cell.classList.add('swamp')
     } if (index >= 80 && index <= 89 && index % 2 === 0) {
       cell.classList.add('fairyG')
@@ -107,10 +107,6 @@ document.addEventListener('DOMContentLoaded',() => {
   startButton.addEventListener('click', () => {
 
     startButtonSound2.play()
-
-    setTimeout(function(){
-      startButtonSound.play()
-    }, 5000)
 
     
     // TIMER
@@ -214,7 +210,7 @@ document.addEventListener('DOMContentLoaded',() => {
         const logCells = document.querySelectorAll('.log')
         logCells.forEach(logCell => logCell.classList.remove('log'))
         logCells.forEach(logCell => {
-          //OLD POSITION
+          //OLD LOG POSITION
           logCell.classList.add('river')
           let logCellIndex = parseInt(logCell.getAttribute('data-id'))
           let isFrogOnLog = false
@@ -223,8 +219,7 @@ document.addEventListener('DOMContentLoaded',() => {
             isFrogOnLog = true
             logCell.classList.remove('player')
           }
-
-          // UPDATES LOG POITION
+          // UPDATES LOG POSITION
           if (logCellIndex === 10 || logCellIndex === 20 || logCellIndex === 30) {
             logCellIndex = logCellIndex + width - 1
           } else {

@@ -15,15 +15,7 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   
-  
-  
 }
-
-/* .wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-} */
 
 header {
   background-color: #82b74b;
@@ -62,12 +54,6 @@ body {
   flex-direction: column;
   height: 100vh;
   margin: 0;
-  /* justify-content: center; */
-  /* background-image: url(../images/shrek-background.png); */
-  /* background-image: url(https://i.imgur.com/UpkGCs5.jpg); */
-  /* background-size: 1000px; */
-  
-  /* background-size: 1500px; */
 
 }
 .grid {
@@ -80,9 +66,9 @@ body {
   width: 550px;
   justify-content: center;
   /* max-width: 600px; */
-  opacity: 0.9;
-  border-radius: 20px;
-  padding-left: 10px;
+  opacity: 0.8;
+  /* border-radius: 20px; */
+  padding-left: 15px;
 }
 
 .grid div {
@@ -125,7 +111,7 @@ body {
 
 .grid div.player {
   background-image: url(http://icons.iconarchive.com/icons/majdi-khawaja/shrek/256/Shrek-icon.png);
-  background-size: 45px;
+  background-size: 55px;
   background-position-x: 0;
   background-position-y: 0;
   background-position: center;
@@ -134,6 +120,8 @@ body {
 
 .grid div.safety {
   background-color: #405d27;
+  /* background-image: url(https://previews.123rf.com/images/varunalight/varunalight1403/varunalight140300049/26710550-idyllic-seamless-grass-texture.jpg);
+  background-size: 300px; */
 }
 
 .grid div.lilypad {
@@ -148,6 +136,7 @@ body {
   background-size: 50px;
   background-position-x: 0;
   background-position-y: 0;
+  background-repeat: no-repeat;
 }
 
 .grid div.donkey {
@@ -155,6 +144,7 @@ body {
   background-size: 50px;
   background-position-x: 0;
   background-position-y: 0;
+  background-repeat: no-repeat;
 }
 
 .grid div.fiona {
@@ -163,6 +153,7 @@ body {
   background-position-x: 0;
   background-position-y: 0;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .grid div.car {
@@ -183,17 +174,17 @@ body {
 
 .grid div.river {
   background-color: blue;
-  background-size: 60px;
+  background-size: 180px;
   background-position-x: 0;
   background-position-y: 0;
 }
 
 .grid div.log {
   background-color: #8B4513;
-  background-size: 60px;
+  background-size: 53px;
   background-position-x: 0;
   background-position-y: 0;
-  border: 2px solid #662200;
+  border: 1px solid #662200;
 }
 
 .skull-and-crossbones {
@@ -219,7 +210,6 @@ body {
 }
 
 .scroll img {
-  /* height: 350px; */
   max-width: 530px;
   min-height: 400px;
   padding-left: 90px;
@@ -242,7 +232,7 @@ body {
   font-size: 90px;
   text-shadow: 5px 5px 5px #b9cf35;
   text-align: center;
-  color: palevioletred;
+  color: white;
   margin-top: 180px;
 }
 
@@ -270,9 +260,6 @@ body {
 .saved-chars {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-  /* width: 100px; */
-  /* height: 200px; */
 }
 
 .fiona {
@@ -312,14 +299,12 @@ footer {
   width: 100%;
   text-align: center;
   background-color: #82b74b;
-  /* opacity: 0.5; */
   min-height: 50px;
   height: 50px;
 }
 
 footer > p {
   color: black;
-  /* opacity: 1; */
   font-size: 15px;
   font-family: 'Cinzel Decorative', cursive;
 
