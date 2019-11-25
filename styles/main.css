@@ -173,14 +173,14 @@ body {
 }
 
 .grid div.river {
-  background-color: blue;
+  background-color: rgb(63, 184, 206);
   background-size: 180px;
   background-position-x: 0;
   background-position-y: 0;
 }
 
 .grid div.log {
-  background-color: #8B4513;
+  background-color: rgb(185, 106, 50);
   background-size: 53px;
   background-position-x: 0;
   background-position-y: 0;
