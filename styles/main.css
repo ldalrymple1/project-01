@@ -20,7 +20,7 @@ main {
 header {
   background-color: #82b74b;
   width: 100%;
-  height: 30%;
+  /* height: 30%; */
   opacity: 0.9;
 }
 
@@ -206,7 +206,7 @@ body {
 .scroll {
   display: flex;
   flex-direction: row;
-  padding-top: 25px;
+  padding-top: 75px;
 }
 
 .scroll img {
