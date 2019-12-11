@@ -47,9 +47,11 @@ Lose screen
 - Version control
 - Git and GitHub
 
-# Code Snippets
+# Challenges
 
-The part I found most challenging about this project was the movement of the logs. I had to familiarize myself with Set Interval and Set Timeout functions, something which was especially new to me. As you can see from my code I created an array with all the log cells and used the forEach method to remove the log class one to the left and and add the river class. To stop the logs moving up the grid I specified that if it got to the index of 10, 20 or 30 it was to move to last cell in that row, indicated through the ‘logCellIndex + width - 1. The biggest challenge of all was getting Shrek to move with the logs. I created a let variable called isFrogOnLog and if it was found to be true the log cell would add the class of the player. 
+The part I found most challenging about this project was the movement of the logs. I had to familiarize myself with Set Interval and Set Timeout functions, something which was especially new to me. As you can see from my code I created an array with all the log cells and used the forEach method to remove the log class one to the left and and add the river class. To stop the logs moving up the grid I specified that if it got to the index of 10, 20 or 30 it was to move to last cell in that row, indicated through the ‘logCellIndex + width - 1'. 
+
+The biggest challenge of all was getting Shrek to move with the logs. I created a let variable called isFrogOnLog and if it was found to be true the log cell would add the class of the player. 
 
 ```
  function logMovement() {
@@ -87,6 +89,7 @@ The part I found most challenging about this project was the movement of the log
 
     }
 ```
+# Wins 
 
 I decided to make the grid with a for loop in the DOM which was created when the  DOM Content Loaded. This saved me hard coding 100 different divs in the HTML. This allowed for an initial set up so the grid generated grid itself.
 
