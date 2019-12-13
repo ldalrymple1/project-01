@@ -7,6 +7,9 @@
 Design a grid-based game using HTML, CSS, and JavaScript technologies learnt in the first three weeks of the course.  Players must be able to win and lose.
 Timeframe: 1 week
 
+# Deployment 
+Play my Shrek game here!  https://lydiadalrymple.com/project-01/
+
 # Motivation
 This was my first ever JavaScript project so I decided to make a simple game. I went into the project with the intention of creating the game ‘Frogger’ however I decided to make it my own and change it to be Shrek themed. It has similar basic features to the game ‘Frogger’. Shrek’s swamp is being attacked by Lord Farquaar and the aim of the game is for Shrek to make it to the other side of his swamp to save Princess Fiona, Donkey and Puss in Boots.  I thought I would be experimental with my game and create something that no one has seen before, something that was a bit different to other grid games that normally spring to mind. This first project clarified the importance of thorough planning. 
 
