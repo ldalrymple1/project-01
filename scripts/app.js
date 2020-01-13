@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded',() => {
       case 40: if (y < width - 1)frogIndex += width
       // if y is smaller than 9, 
         break
-      case 74: if (y > 0) frogIndex -= width * 2
+      case 32: if (y > 0) frogIndex -= width * 2
         doubleJump.play()
 
     }
